@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Main where
+module Register (register) where
 
 import Network.Wreq
 import Control.Lens hiding ((.=))
@@ -21,10 +21,3 @@ register name = do
     let playerId = r ^? responseBody . key "id" . _String
         cookieJar = r ^. responseCookieJar
     return (maybe "No id found" T.unpack playerId, cookieJar)
-
-main :: IO ()
-main = do
-    let playerName = "gnanika"
-    (playerId, cookieJar) <- register playerName
-    putStrLn $ "ID: " ++ playerId
-    putStrLn $ "Session cookies: " ++ show (destroyCookieJar cookieJar)
