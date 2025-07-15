@@ -1,0 +1,5 @@
+15/07/2025
+WORKING ON THE SCALA CODE - REGISTRATION API CALL
+- learnt that the requests module in scala behaves quite like its python counterpart
+- the scala code is much easier to write when compared to Haskell
+- using session to do cookie managment
