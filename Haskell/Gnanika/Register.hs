@@ -8,12 +8,18 @@ import Control.Lens hiding ((.=))
 import Data.Aeson (encode, object, (.=))
 import Data.Aeson.Lens (key, _String)
 import qualified Data.Text as T
+import ApiConfig
 
-register :: Sess.Session -> String -> IO (Maybe String)
+registerUrl :: String
+registerUrl = baseUrl ++ "register"
+
+gameMode :: String
+gameMode = "wordle"
+
+register :: Sess.Session -> String -> IO String
 register sess name = do
-    let url = "https://wordle.we4shakthi.in/game/register"
-        payload = encode $ object ["mode" .= ("wordle" :: String), "name" .= name]
-        opts = defaults & header "Content-Type" .~ ["application/json"]
+    let url = registerUrl
+        payload = encode $ object ["mode" .= gameMode, "name" .= name]
     r <- Sess.postWith opts sess url payload
     let playerId = r ^? responseBody . key "id" . _String
-    return (fmap T.unpack playerId)
+    return $ maybe "" T.unpack playerId

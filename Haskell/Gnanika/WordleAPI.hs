@@ -10,9 +10,11 @@ import System.IO
 import Control.Monad (when)
 import Data.Char (toLower)
 import Data.List (elemIndices, (\\), nub)
+import System.Random (randomRIO)
+import Network.Wreq (get)
 
 instructions :: String
-instructions = "The computer will guess the word. Feedback is fetched from the API."
+instructions = "The computer will guess the word. Hehehe"
 
 getWords :: IO [String]
 getWords = do
@@ -85,18 +87,18 @@ gameLoop sess pid wordsList = do
 main :: IO ()
 main = do
     sess <- Sess.newSession
-    mPid <- register sess "gnanika"
-    case mPid of
-        Nothing -> putStrLn "Registration failed."
-        Just pid -> do
-            createGame sess pid
-            wordsList <- getWords
-            let playLoop = do
-                    gameLoop sess pid wordsList
-                    putStr "Do you want to play again? (y/n): "
-                    hFlush stdout
-                    again <- getLine
-                    when (map toLower again == "y") $ do
-                        createGame sess pid
-                        playLoop
-            playLoop
+    pid <- register sess "gnanika"
+    if null pid
+      then putStrLn "Registration failed."
+      else do
+        createGame sess pid
+        wordsList <- getWords
+        let playLoop = do
+                gameLoop sess pid wordsList
+                putStr "Do you want to play again? (y/n): "
+                hFlush stdout
+                again <- getLine
+                when (map toLower again == "y") $ do
+                    createGame sess pid
+                    playLoop
+        playLoop
