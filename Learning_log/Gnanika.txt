@@ -1,5 +1,23 @@
 15/07/2025
-WORKING ON THE SCALA CODE - REGISTRATION API CALL
+SCALA - REGISTRATION API CALL
 - learnt that the requests module in scala behaves quite like its python counterpart
 - the scala code is much easier to write when compared to Haskell
 - using session to do cookie managment
+- getting error when the player loses the game
+
+17/07/2025
+SCALA - GUESS API 422 STATUS CODE
+- I was getting  an exception when the statusCode is 422
+    Exception in thread "main" requests.RequestFailedException: Request to https://wordle.we4shakthi.in/game/guess failed with status code 422
+    {"answer":"bajus","feedback":"GGRGR","message":"You have exceeded the number of allowed guesses. Post to /create to create a new game"}
+
+            at requests.Requester$$anon$1.readBytesThrough(Requester.scala:398)
+            at geny.Readable.writeBytesTo(Writable.scala:93)
+            at geny.Readable.writeBytesTo$(Writable.scala:91)
+            at requests.Requester$$anon$1.writeBytesTo(Requester.scala:191)
+            at requests.Requester.apply(Requester.scala:140)
+            at APICalls.guess(register.scala:39)
+            at register$package$.run(register.scala:63)
+            at run.main(register.scala:55)
+- Found out that by default scala requests library throws an exception for non-2xx status codes
+- Now using try except blocks to handle this case
