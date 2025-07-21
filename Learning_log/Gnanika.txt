@@ -20,3 +20,10 @@ SCALA - WORDLEBOT CODE
 - Still was unable to fix the error despite using try except blocks
 - For now just using the apis as they are
 - UPDATE: No idea why, after integrating both WordleAPI and WordleBot, I am not getting the error
+
+21/07/2025
+
+ELIXIR - GETTING STARTED
+- Exploring the finch library in elixir 
+- apparently the cookie should be set manually
+
