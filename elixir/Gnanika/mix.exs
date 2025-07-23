@@ -20,6 +20,7 @@ defmodule Gnanika.MixProject do
   defp deps do
     [
       {:finch, "~> 0.16"}
+      {:jason, "~> 1.4"}
     ]
   end
 end
