@@ -13,8 +13,7 @@ defmodule Gnanika.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :finch],
-      mod: {Gnanika.Application, []}
+      extra_applications: [:logger, :finch]
     ]
   end
 
