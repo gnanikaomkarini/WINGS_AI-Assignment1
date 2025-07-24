@@ -26,4 +26,3 @@ SCALA - WORDLEBOT CODE
 ELIXIR - GETTING STARTED
 - Exploring the finch library in elixir 
 - apparently the cookie should be set manually
-
