@@ -1,0 +1,12 @@
+July 16, 2025
+
+Recent Accomplishments (Scala):
+Successfully completed  Scala Wordle bot project.
+
+Gained experience utilizing the sttp library for HTTP requests and Circe for JSON manipulation within the Scala ecosystem. This project provided valuable insights into building functional applications with external API interactions.
+
+Current Learning (Elixir):
+
+Currently immersed in learning Elixir.
+Have begun exploring the documentation for HTTP client libraries, specifically httpoison and Finch.
+I'm in the process of understanding their respective strengths and use cases for my wordle project project.
